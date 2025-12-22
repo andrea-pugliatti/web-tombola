@@ -2,15 +2,19 @@ import { useEffect, useState } from "react";
 
 function App() {
 	const [tombola, setTombola] = useState([]);
+	const [possibleNumbers, setPossibleNumbers] = useState([]);
 
 	const inizializzaTombola = () => {
 		const numbers = [];
+		const possible = [];
 
-		for (let i = 0; i < 90; i++) {
+		for (let i = 0; i < 10; i++) {
 			numbers.push(false);
+			possible.push(i + 1);
 		}
 
 		setTombola(numbers);
+		setPossibleNumbers(possible);
 	};
 
 	const getRandomNumber = (min, max) =>
@@ -18,27 +22,47 @@ function App() {
 
 	const handleClick = () => {
 		const newTombola = [...tombola];
-		let randomNumber = getRandomNumber(1, 90);
-		while (newTombola[randomNumber - 1]) {
-			randomNumber = randomNumber(1, 90);
-		}
-		console.log(randomNumber);
-		newTombola[randomNumber - 1] = true;
+
+		const randomIndex = getRandomNumber(0, possibleNumbers.length);
+
+		newTombola[possibleNumbers[randomIndex] - 1] = true;
 		setTombola(newTombola);
+
+		possibleNumbers.splice(randomIndex, 1);
+		setPossibleNumbers([...possibleNumbers]);
 	};
 
 	useEffect(inizializzaTombola, []);
 
 	return (
 		<>
-			<button type="button" onClick={handleClick}>
-				Estrai
-			</button>
-			{tombola.map((current, index) => (
-				<div key={`btn-${index}-${Date.now()}`}>
-					{index + 1} {current.toString()}
+			<header>Tomboola</header>
+			<div className="container">
+				<button
+					className="button extract-button"
+					type="button"
+					onClick={handleClick}
+				>
+					Estrai
+				</button>
+				<button
+					className="button end-button"
+					type="button"
+					onClick={inizializzaTombola}
+				>
+					Termina Partita
+				</button>
+				<div className="row">
+					{tombola.map((current, index) => (
+						<div
+							className={`number ${current ? "active" : ""}`}
+							key={`btn-${index}-${Date.now()}`}
+						>
+							{index + 1}
+						</div>
+					))}
 				</div>
-			))}
+			</div>
 		</>
 	);
 }

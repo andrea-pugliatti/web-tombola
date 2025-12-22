@@ -1,6 +1,53 @@
 * {
-	font-family: system-ui, Helvetica, Arial, sans-serif;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+body {
+	font-family: system-ui, Helvetica, Arial, sans-serif;
+	background-color: rgb(23, 164, 148);
+}
+
+.container {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 700px;
+	margin: 1rem;
+}
+
+.number {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0.5rem;
+	padding: 0.2rem;
+	background-color: white;
+	font-weight: 700;
+	font-size: 1.1rem;
+}
+
+.active {
+	background-color: rgb(255, 102, 102);
+	color: white;
+}
+
+.button {
+	padding: 0.5rem;
+}
+
+.extract-button {
+	background-color: orange;
+}
+
+.end-button {
+	background-color: red;
 }
