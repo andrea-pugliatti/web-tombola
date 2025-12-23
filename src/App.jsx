@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import Header from "./components/Header";
+
 function App() {
 	const [tombola, setTombola] = useState([]);
 	const [possibleNumbers, setPossibleNumbers] = useState([]);
@@ -37,7 +39,7 @@ function App() {
 
 	return (
 		<>
-			<header>Tomboola</header>
+			<Header />
 			<div className="container">
 				<button
 					className="button extract-button"

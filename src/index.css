@@ -9,6 +9,10 @@ body {
 	background-color: rgb(23, 164, 148);
 }
 
+header {
+	padding: 1rem;
+}
+
 .container {
 	max-width: 1000px;
 	margin: 0 auto;
