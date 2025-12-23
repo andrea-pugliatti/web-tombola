@@ -11,6 +11,10 @@ body {
 
 header {
 	padding: 1rem;
+	color: white;
+	background-color: rgb(195, 15, 22);
+	border-bottom: 5px solid goldenrod;
+	margin-bottom: 1rem;
 }
 
 .container {
@@ -46,16 +50,51 @@ header {
 	color: white;
 }
 
+.top-tabellone {
+	& > * {
+		margin: 0 1rem;
+	}
+}
+
 .button {
-	padding: 0.5rem;
+	font-weight: 700;
+	padding: 0.6rem 1.1rem;
+	border: 1px solid white;
+	border-radius: 1rem;
 }
 
 .extract-button {
-	background-color: orange;
+	background-color: rgb(252, 189, 27);
+	color: white;
+	&:hover {
+		background-color: rgb(189, 123, 0);
+	}
 }
 
 .end-button {
-	background-color: red;
+	background-color: rgb(255, 102, 102);
+	color: white;
+	&:hover {
+		background-color: rgb(175, 70, 70);
+	}
+	&:disabled {
+		background-color: rgb(175, 70, 70);
+		color: darkgray;
+		border: 1px solid darkgray;
+	}
+}
+
+.last-extracted {
+	font-size: 0.9rem;
+	font-weight: 700;
+	padding: 0.6rem 1.1rem;
+	background-color: beige;
+	border-radius: 1rem;
+	border: 1px solid white;
+}
+
+.extracted-number {
+	font-size: 1.1rem;
 }
 
 .alert {
@@ -69,11 +108,17 @@ header {
 	height: 100vh;
 	background-color: rgba(0, 0, 0, 0.8);
 	color: white;
+	& > * {
+		margin: 1rem;
+	}
 }
 
 .alert-button {
 	background-color: white;
 	border: none;
+	&:hover {
+		background-color: darkgray;
+	}
 }
 
 .d-none {

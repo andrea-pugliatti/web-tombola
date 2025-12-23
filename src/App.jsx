@@ -5,6 +5,7 @@ import Header from "./components/Header";
 function App() {
 	const [tombola, setTombola] = useState([]);
 	const [possibleNumbers, setPossibleNumbers] = useState([]);
+	const [lastExtracted, setLastExtracted] = useState(null);
 	const [alert, setAlert] = useState(false);
 
 	const inizializzaTombola = () => {
@@ -28,6 +29,8 @@ function App() {
 
 		const randomIndex = getRandomNumber(0, possibleNumbers.length);
 
+		setLastExtracted(possibleNumbers[randomIndex] + 1);
+
 		newTombola[possibleNumbers[randomIndex]] = true;
 		setTombola(newTombola);
 
@@ -41,21 +44,30 @@ function App() {
 		<>
 			<Header />
 			<div className="container">
-				<button
-					className="button extract-button"
-					type="button"
-					onClick={handleClick}
-				>
-					Estrai
-				</button>
-				<button
-					className="button end-button"
-					type="button"
-					disabled={possibleNumbers.length > 75}
-					onClick={() => setAlert(true)}
-				>
-					Termina Partita
-				</button>
+				<div className="top-tabellone">
+					<button
+						className="button extract-button"
+						type="button"
+						onClick={handleClick}
+					>
+						Estrai
+					</button>
+					<button
+						className="button end-button"
+						type="button"
+						disabled={possibleNumbers.length > 75}
+						onClick={() => setAlert(true)}
+					>
+						Termina Partita
+					</button>
+					{lastExtracted && (
+						<span className="last-extracted">
+							Ultimo estratto:{" "}
+							<span className="extracted-number">{lastExtracted}</span>
+						</span>
+					)}
+				</div>
+
 				<div className="row">
 					{tombola.map((current, index) => (
 						<div

@@ -2,7 +2,7 @@ export default function Header() {
 	return (
 		<header>
 			<div className="container">
-				<h1>Tomboola</h1>
+				<h1>TombOOla</h1>
 			</div>
 		</header>
 	);
