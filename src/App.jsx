@@ -3,14 +3,15 @@ import { useEffect, useState } from "react";
 function App() {
 	const [tombola, setTombola] = useState([]);
 	const [possibleNumbers, setPossibleNumbers] = useState([]);
+	const [alert, setAlert] = useState(false);
 
 	const inizializzaTombola = () => {
 		const numbers = [];
 		const possible = [];
 
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < 90; i++) {
 			numbers.push(false);
-			possible.push(i + 1);
+			possible.push(i);
 		}
 
 		setTombola(numbers);
@@ -25,7 +26,7 @@ function App() {
 
 		const randomIndex = getRandomNumber(0, possibleNumbers.length);
 
-		newTombola[possibleNumbers[randomIndex] - 1] = true;
+		newTombola[possibleNumbers[randomIndex]] = true;
 		setTombola(newTombola);
 
 		possibleNumbers.splice(randomIndex, 1);
@@ -48,7 +49,8 @@ function App() {
 				<button
 					className="button end-button"
 					type="button"
-					onClick={inizializzaTombola}
+					disabled={possibleNumbers.length > 75}
+					onClick={() => setAlert(true)}
 				>
 					Termina Partita
 				</button>
@@ -62,6 +64,21 @@ function App() {
 						</div>
 					))}
 				</div>
+			</div>
+			<div
+				className={`alert ${alert || possibleNumbers.length === 0 ? "" : "d-none"}`}
+			>
+				<h2>HAI FATTO TOMBOLA!</h2>
+				<button
+					type="button"
+					className="button alert-button"
+					onClick={() => {
+						setAlert(false);
+						inizializzaTombola();
+					}}
+				>
+					Reset
+				</button>
 			</div>
 		</>
 	);

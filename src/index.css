@@ -31,12 +31,14 @@ body {
 	margin: 0.5rem;
 	padding: 0.2rem;
 	background-color: white;
+	box-shadow: -3px 3px 0px 1px rgb(188, 188, 188);
 	font-weight: 700;
 	font-size: 1.1rem;
 }
 
 .active {
 	background-color: rgb(255, 102, 102);
+	box-shadow: -3px 3px 0px 1px rgb(175, 70, 70);
 	color: white;
 }
 
@@ -50,4 +52,26 @@ body {
 
 .end-button {
 	background-color: red;
+}
+
+.alert {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+}
+
+.alert-button {
+	background-color: white;
+	border: none;
+}
+
+.d-none {
+	display: none;
 }
