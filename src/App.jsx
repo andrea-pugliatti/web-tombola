@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Header from "./components/Header";
+import Tabellone from "./components/Tombola";
 
 function App() {
 	const [tombola, setTombola] = useState([]);
@@ -68,17 +69,9 @@ function App() {
 					)}
 				</div>
 
-				<div className="row">
-					{tombola.map((current, index) => (
-						<div
-							className={`number ${current ? "active" : ""}`}
-							key={`btn-${index}-${Date.now()}`}
-						>
-							{index + 1}
-						</div>
-					))}
-				</div>
+				<Tabellone tombola={tombola} />
 			</div>
+
 			<div
 				className={`alert ${alert || possibleNumbers.length === 0 ? "" : "d-none"}`}
 			>
