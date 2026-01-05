@@ -8,6 +8,8 @@ function App() {
 	const [possibleNumbers, setPossibleNumbers] = useState([]);
 	const [lastExtracted, setLastExtracted] = useState(null);
 	const [alert, setAlert] = useState(false);
+	const [cartelle, setCartelle] = useState([]);
+	const [numPlayers, setNumPlayers] = useState("");
 
 	const inizializzaTombola = () => {
 		const numbers = [];
@@ -70,6 +72,56 @@ function App() {
 				</div>
 
 				<Tabellone tombola={tombola} />
+			</div>
+
+			<div className="form-cartelle">
+				<form
+					onSubmit={(e) => {
+						e.preventDefault();
+
+						const players = [];
+						for (let i = 0; i < numPlayers; i++) {
+							const numbers = [];
+							const counters = Array(9).fill(0);
+
+							while (numbers.length < 15) {
+								const random = getRandomNumber(1, 90);
+
+								if (counters[random] >= 3) continue;
+
+								if (numbers.includes(random)) continue;
+
+								numbers.push(random);
+								counters[random] += 1;
+							}
+
+							numbers.sort((a, b) => a - b);
+							players.push(numbers);
+						}
+						setCartelle(players);
+					}}
+				>
+					<input
+						type="number"
+						name="players"
+						placeholder="Inserisci il numero di partecipanti"
+						value={numPlayers}
+						onChange={(e) => setNumPlayers(e.target.value)}
+					/>
+					<button type="submit">Genera</button>
+				</form>
+			</div>
+
+			<div className="cartelle">
+				{cartelle.map((cartella, index) => {
+					return (
+						<div key={`cartella-${index}`} className="cartella">
+							{cartella.map((numero, index) => {
+								return <span key={`numero-${index}`}>{numero} </span>;
+							})}
+						</div>
+					);
+				})}
 			</div>
 
 			<div
