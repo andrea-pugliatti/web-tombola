@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useTombola } from "../contexts/TombolaContext";
 
@@ -9,10 +9,8 @@ import Tabellone from "./Tombola";
 import TombolaControls from "./TombolaControls";
 
 export default function Homepage() {
-	const { tombola, initializeTombola } = useTombola();
+	const { tombola } = useTombola();
 	const [alert, setAlert] = useState(false);
-
-	useEffect(initializeTombola, []);
 
 	return (
 		<>

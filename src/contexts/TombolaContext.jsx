@@ -1,10 +1,16 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const TombolaContext = createContext();
 
 function TombolaProvider({ children }) {
-	const [tombola, setTombola] = useState([]);
-	const [possibleNumbers, setPossibleNumbers] = useState([]);
+	const [tombola, setTombola] = useState(() => {
+		const savedData = localStorage.getItem("tombola");
+		return savedData ? JSON.parse(savedData) : [];
+	});
+	const [possibleNumbers, setPossibleNumbers] = useState(() => {
+		const savedData = localStorage.getItem("possibleNumbers");
+		return savedData ? JSON.parse(savedData) : [];
+	});
 
 	const initializeTombola = () => {
 		const numbers = [];
@@ -18,6 +24,17 @@ function TombolaProvider({ children }) {
 		setTombola(numbers);
 		setPossibleNumbers(possible);
 	};
+
+	useEffect(
+		() => localStorage.setItem("tombola", JSON.stringify(tombola)),
+		[tombola],
+	);
+
+	useEffect(
+		() =>
+			localStorage.setItem("possibleNumbers", JSON.stringify(possibleNumbers)),
+		[possibleNumbers],
+	);
 
 	return (
 		<TombolaContext.Provider

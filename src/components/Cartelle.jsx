@@ -1,8 +1,11 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: <Ignore linter> */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Cartelle({ tombola }) {
-	const [cartelle, setCartelle] = useState([]);
+	const [cartelle, setCartelle] = useState(() => {
+		const savedData = localStorage.getItem("cartelle");
+		return savedData ? JSON.parse(savedData) : [];
+	});
 	const [numPlayers, setNumPlayers] = useState("");
 
 	const getRandomNumber = (min, max) =>
@@ -49,6 +52,11 @@ export default function Cartelle({ tombola }) {
 		}
 		setCartelle(players);
 	};
+
+	useEffect(
+		() => localStorage.setItem("cartelle", JSON.stringify(cartelle)),
+		[cartelle],
+	);
 
 	return (
 		<>
