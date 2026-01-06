@@ -1,6 +1,7 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: <Ignore linter> */
 import { useEffect, useState } from "react";
 
+import Cartelle from "./components/Cartelle";
 import Header from "./components/Header";
 import Tabellone from "./components/Tombola";
 
@@ -9,8 +10,6 @@ function App() {
 	const [possibleNumbers, setPossibleNumbers] = useState([]);
 	const [lastExtracted, setLastExtracted] = useState(null);
 	const [alert, setAlert] = useState(false);
-	const [cartelle, setCartelle] = useState([]);
-	const [numPlayers, setNumPlayers] = useState("");
 
 	const inizializzaTombola = () => {
 		const numbers = [];
@@ -40,48 +39,6 @@ function App() {
 
 		possibleNumbers.splice(randomIndex, 1);
 		setPossibleNumbers([...possibleNumbers]);
-	};
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-
-		const players = [];
-		for (let i = 0; i < numPlayers; i++) {
-			const numbers = [];
-			const counters = Array(9).fill(0);
-
-			while (numbers.length < 15) {
-				const random = getRandomNumber(1, 90);
-				const decimal = Math.floor(random / 10);
-
-				if (counters[decimal] >= 3) continue;
-
-				if (numbers.includes(random)) continue;
-
-				numbers.push(random);
-				counters[decimal] += 1;
-			}
-
-			numbers.sort((a, b) => a - b);
-
-			for (let i = 0; i < counters.length; i++) {
-				const nNums = counters[i];
-
-				if (nNums === 0) {
-					numbers.splice(i * 3, 0, " ", " ", " ");
-				} else if (nNums === 1) {
-					const num = numbers.splice(i * 3, 1, " ", " ", " ");
-					const random = getRandomNumber(0, 3);
-					numbers[i * 3 + random] = num[0];
-				} else if (nNums === 2) {
-					const random = getRandomNumber(0, 3);
-					numbers.splice(i * 3 + random, 0, " ");
-				}
-			}
-			console.log(numbers);
-			players.push(numbers);
-		}
-		setCartelle(players);
 	};
 
 	useEffect(inizializzaTombola, []);
@@ -116,38 +73,7 @@ function App() {
 
 				<Tabellone tombola={tombola} />
 
-				<div className="form-cartelle">
-					<form onSubmit={handleSubmit}>
-						<input
-							type="number"
-							name="players"
-							placeholder="Inserisci il numero di partecipanti"
-							value={numPlayers}
-							onChange={(e) => setNumPlayers(e.target.value)}
-						/>
-
-						<button type="submit">Genera</button>
-					</form>
-				</div>
-
-				<div className="cartelle">
-					{cartelle.map((cartella, index) => {
-						return (
-							<div key={`cartella-${index}`} className="cartella">
-								{cartella.map((numero, index) => {
-									return (
-										<span
-											className={`number ${tombola[numero - 1] ? "active" : ""}`}
-											key={`numero-${index}`}
-										>
-											{numero}
-										</span>
-									);
-								})}
-							</div>
-						);
-					})}
-				</div>
+				<Cartelle tombola={tombola} />
 			</div>
 
 			<div
