@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: <Ignore linter> */
 import { useEffect, useState } from "react";
 
 import Header from "./components/Header";
@@ -41,6 +42,48 @@ function App() {
 		setPossibleNumbers([...possibleNumbers]);
 	};
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		const players = [];
+		for (let i = 0; i < numPlayers; i++) {
+			const numbers = [];
+			const counters = Array(9).fill(0);
+
+			while (numbers.length < 15) {
+				const random = getRandomNumber(1, 90);
+				const decimal = Math.floor(random / 10);
+
+				if (counters[decimal] >= 3) continue;
+
+				if (numbers.includes(random)) continue;
+
+				numbers.push(random);
+				counters[decimal] += 1;
+			}
+
+			numbers.sort((a, b) => a - b);
+
+			for (let i = 0; i < counters.length; i++) {
+				const nNums = counters[i];
+
+				if (nNums === 0) {
+					numbers.splice(i * 3, 0, " ", " ", " ");
+				} else if (nNums === 1) {
+					const num = numbers.splice(i * 3, 1, " ", " ", " ");
+					const random = getRandomNumber(0, 3);
+					numbers[i * 3 + random] = num[0];
+				} else if (nNums === 2) {
+					const random = getRandomNumber(0, 3);
+					numbers.splice(i * 3 + random, 0, " ");
+				}
+			}
+			console.log(numbers);
+			players.push(numbers);
+		}
+		setCartelle(players);
+	};
+
 	useEffect(inizializzaTombola, []);
 
 	return (
@@ -72,56 +115,39 @@ function App() {
 				</div>
 
 				<Tabellone tombola={tombola} />
-			</div>
 
-			<div className="form-cartelle">
-				<form
-					onSubmit={(e) => {
-						e.preventDefault();
+				<div className="form-cartelle">
+					<form onSubmit={handleSubmit}>
+						<input
+							type="number"
+							name="players"
+							placeholder="Inserisci il numero di partecipanti"
+							value={numPlayers}
+							onChange={(e) => setNumPlayers(e.target.value)}
+						/>
 
-						const players = [];
-						for (let i = 0; i < numPlayers; i++) {
-							const numbers = [];
-							const counters = Array(9).fill(0);
+						<button type="submit">Genera</button>
+					</form>
+				</div>
 
-							while (numbers.length < 15) {
-								const random = getRandomNumber(1, 90);
-
-								if (counters[random] >= 3) continue;
-
-								if (numbers.includes(random)) continue;
-
-								numbers.push(random);
-								counters[random] += 1;
-							}
-
-							numbers.sort((a, b) => a - b);
-							players.push(numbers);
-						}
-						setCartelle(players);
-					}}
-				>
-					<input
-						type="number"
-						name="players"
-						placeholder="Inserisci il numero di partecipanti"
-						value={numPlayers}
-						onChange={(e) => setNumPlayers(e.target.value)}
-					/>
-					<button type="submit">Genera</button>
-				</form>
-			</div>
-
-			<div className="cartelle">
-				{cartelle.map((cartella, index) => {
-					return (
-						<div key={`cartella-${index}`} className="cartella">
-							{cartella.map((numero, index) => {
-								return <span key={`numero-${index}`}>{numero} </span>;
-							})}
-						</div>
-					);
-				})}
+				<div className="cartelle">
+					{cartelle.map((cartella, index) => {
+						return (
+							<div key={`cartella-${index}`} className="cartella">
+								{cartella.map((numero, index) => {
+									return (
+										<span
+											className={`number ${tombola[numero - 1] ? "active" : ""}`}
+											key={`numero-${index}`}
+										>
+											{numero}
+										</span>
+									);
+								})}
+							</div>
+						);
+					})}
+				</div>
 			</div>
 
 			<div

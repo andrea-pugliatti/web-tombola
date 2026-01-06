@@ -18,7 +18,7 @@ header {
 }
 
 .container {
-	max-width: 1000px;
+	max-width: 1100px;
 	margin: 0 auto;
 }
 
@@ -68,6 +68,7 @@ header {
 	color: white;
 	&:hover {
 		background-color: rgb(189, 123, 0);
+		cursor: pointer;
 	}
 }
 
@@ -76,8 +77,10 @@ header {
 	color: white;
 	&:hover {
 		background-color: rgb(175, 70, 70);
+		cursor: pointer;
 	}
 	&:disabled {
+		cursor: unset;
 		background-color: rgb(175, 70, 70);
 		color: darkgray;
 		border: 1px solid darkgray;
@@ -95,6 +98,55 @@ header {
 
 .extracted-number {
 	font-size: 1.1rem;
+}
+
+.form-cartelle {
+	margin: 1rem 2rem;
+
+	input {
+		text-align: right;
+		font-size: 0.9rem;
+		font-weight: 700;
+		width: 100px;
+		padding: 0.5rem 0 0.5rem 1rem;
+		background-color: beige;
+		border: 1px solid white;
+		border-top-left-radius: 1rem;
+		border-bottom-left-radius: 1rem;
+	}
+
+	button {
+		font-size: 0.9rem;
+		font-weight: 700;
+		padding: 0.5rem 1rem;
+		color: white;
+		background-color: rgb(252, 189, 27);
+		border: 1px solid white;
+		border-top-right-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+		&:hover {
+			background-color: rgb(189, 123, 0);
+			cursor: pointer;
+		}
+	}
+}
+
+.cartelle {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin: 1rem 2rem 1rem 2rem;
+}
+
+.cartella {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 250px;
+	background-color: rgb(10, 0, 155);
+	padding: 1.5rem 1rem 0.5rem 1rem;
+	border-radius: 0.5rem;
+	box-shadow: -3px 3px 0px 1px rgb(5, 0, 73);
 }
 
 .alert {
