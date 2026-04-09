@@ -9,22 +9,22 @@ import Tabellone from "./Tombola";
 import TombolaControls from "./TombolaControls";
 
 export default function Homepage() {
-	const { tombola } = useTombola();
-	const [alert, setAlert] = useState(false);
+  const { tombola } = useTombola();
+  const [alert, setAlert] = useState(false);
 
-	return (
-		<>
-			<Header />
+  return (
+    <>
+      <Header />
 
-			<Alert alert={alert} setAlert={setAlert} />
+      <Alert alert={alert} setAlert={setAlert} />
 
-			<div className="container">
-				<TombolaControls setAlert={setAlert} />
+      <div className="container">
+        <TombolaControls setAlert={setAlert} />
 
-				<Tabellone tombola={tombola} />
+        <Tabellone tombola={tombola} />
 
-				<Cartelle tombola={tombola} />
-			</div>
-		</>
-	);
+        <Cartelle tombola={tombola} />
+      </div>
+    </>
+  );
 }

@@ -1,179 +1,179 @@
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-	font-family: system-ui, Helvetica, Arial, sans-serif;
-	background-color: rgb(23, 164, 148);
+  font-family: system-ui, Helvetica, Arial, sans-serif;
+  background-color: rgb(23, 164, 148);
 }
 
 header {
-	padding: 1rem;
-	color: white;
-	background-color: rgb(195, 15, 22);
-	border-bottom: 5px solid goldenrod;
-	margin-bottom: 1rem;
+  padding: 1rem;
+  color: white;
+  background-color: rgb(195, 15, 22);
+  border-bottom: 5px solid goldenrod;
+  margin-bottom: 1rem;
 }
 
 .container {
-	max-width: 1100px;
-	margin: 0 auto;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .row {
-	display: flex;
-	flex-wrap: wrap;
-	max-width: 700px;
-	margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: 1rem;
 }
 
 .number {
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0.5rem;
-	padding: 0.2rem;
-	background-color: white;
-	box-shadow: -3px 3px 0px 1px rgb(188, 188, 188);
-	font-weight: 700;
-	font-size: 1.1rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
+  padding: 0.2rem;
+  background-color: white;
+  box-shadow: -3px 3px 0px 1px rgb(188, 188, 188);
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .active {
-	background-color: rgb(255, 102, 102);
-	box-shadow: -3px 3px 0px 1px rgb(175, 70, 70);
-	color: white;
+  background-color: rgb(255, 102, 102);
+  box-shadow: -3px 3px 0px 1px rgb(175, 70, 70);
+  color: white;
 }
 
 .top-tabellone {
-	& > * {
-		margin: 0 1rem;
-	}
+  & > * {
+    margin: 0 1rem;
+  }
 }
 
 .button {
-	font-weight: 700;
-	padding: 0.6rem 1.1rem;
-	border: 1px solid white;
-	border-radius: 1rem;
+  font-weight: 700;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid white;
+  border-radius: 1rem;
 }
 
 .extract-button {
-	background-color: rgb(252, 189, 27);
-	color: white;
-	&:hover {
-		background-color: rgb(189, 123, 0);
-		cursor: pointer;
-	}
+  background-color: rgb(252, 189, 27);
+  color: white;
+  &:hover {
+    background-color: rgb(189, 123, 0);
+    cursor: pointer;
+  }
 }
 
 .end-button {
-	background-color: rgb(255, 102, 102);
-	color: white;
-	&:hover {
-		background-color: rgb(175, 70, 70);
-		cursor: pointer;
-	}
-	&:disabled {
-		cursor: unset;
-		background-color: rgb(175, 70, 70);
-		color: darkgray;
-		border: 1px solid darkgray;
-	}
+  background-color: rgb(255, 102, 102);
+  color: white;
+  &:hover {
+    background-color: rgb(175, 70, 70);
+    cursor: pointer;
+  }
+  &:disabled {
+    cursor: unset;
+    background-color: rgb(175, 70, 70);
+    color: darkgray;
+    border: 1px solid darkgray;
+  }
 }
 
 .last-extracted {
-	font-size: 0.9rem;
-	font-weight: 700;
-	padding: 0.6rem 1.1rem;
-	background-color: beige;
-	border-radius: 1rem;
-	border: 1px solid white;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.6rem 1.1rem;
+  background-color: beige;
+  border-radius: 1rem;
+  border: 1px solid white;
 }
 
 .extracted-number {
-	font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
 .form-cartelle {
-	margin: 1rem 2rem;
+  margin: 1rem 2rem;
 
-	input {
-		text-align: right;
-		font-size: 0.9rem;
-		font-weight: 700;
-		width: 100px;
-		padding: 0.5rem 0 0.5rem 1rem;
-		background-color: beige;
-		border: 1px solid white;
-		border-top-left-radius: 1rem;
-		border-bottom-left-radius: 1rem;
-	}
+  input {
+    text-align: right;
+    font-size: 0.9rem;
+    font-weight: 700;
+    width: 100px;
+    padding: 0.5rem 0 0.5rem 1rem;
+    background-color: beige;
+    border: 1px solid white;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+  }
 
-	button {
-		font-size: 0.9rem;
-		font-weight: 700;
-		padding: 0.5rem 1rem;
-		color: white;
-		background-color: rgb(252, 189, 27);
-		border: 1px solid white;
-		border-top-right-radius: 1rem;
-		border-bottom-right-radius: 1rem;
-		&:hover {
-			background-color: rgb(189, 123, 0);
-			cursor: pointer;
-		}
-	}
+  button {
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: rgb(252, 189, 27);
+    border: 1px solid white;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    &:hover {
+      background-color: rgb(189, 123, 0);
+      cursor: pointer;
+    }
+  }
 }
 
 .cartelle {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1rem;
-	margin: 1rem 2rem 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 2rem 1rem 2rem;
 }
 
 .cartella {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	height: 250px;
-	background-color: rgb(10, 0, 155);
-	padding: 1.5rem 1rem 0.5rem 1rem;
-	border-radius: 0.5rem;
-	box-shadow: -3px 3px 0px 1px rgb(5, 0, 73);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 250px;
+  background-color: rgb(10, 0, 155);
+  padding: 1.5rem 1rem 0.5rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: -3px 3px 0px 1px rgb(5, 0, 73);
 }
 
 .alert {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.8);
-	color: white;
-	& > * {
-		margin: 1rem;
-	}
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  & > * {
+    margin: 1rem;
+  }
 }
 
 .alert-button {
-	background-color: white;
-	border: none;
-	&:hover {
-		background-color: darkgray;
-		cursor: pointer;
-	}
+  background-color: white;
+  border: none;
+  &:hover {
+    background-color: darkgray;
+    cursor: pointer;
+  }
 }
 
 .d-none {
-	display: none;
+  display: none;
 }
